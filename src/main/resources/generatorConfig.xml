@@ -4,7 +4,7 @@
 
 <generatorConfiguration>
 
-    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <!--指定特定数据库的jdbc驱动jar包的位置 ，idea需要这一配置-->
    <classPathEntry location="./lib/ojdbc6.jar"/>
 
     <context id="context1">
