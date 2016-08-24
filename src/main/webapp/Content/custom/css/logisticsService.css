@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/* index Document by tuy 2013.09.27*/
+
+
+
+
+/*--------------------------main---------------------------*/
+.fw_checkbox{
+	width:21px;height:21px;float:left;
+}
+.fw_label1{
+	width:22%;float:left;
+}
+.fw_label2{
+	width:11%;float:left;
+}
+.fw_radio{
+	width:19px;height:19px;float:left;
+}
+.fw_input{
+	width:50px;float:left;
+}

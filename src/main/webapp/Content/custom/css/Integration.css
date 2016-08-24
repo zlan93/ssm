@@ -1,0 +1,98 @@
+﻿body {
+}
+
+.text-darkgray{
+    color: #808080 !important;
+}
+
+.timeline > li{
+    margin-right:0px;
+}
+
+.timeline > li > .timeline-item{
+    margin-right:0px;
+}
+
+.col-slabel{
+    width:8%;
+    float:left;
+    text-align:right;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.col-label{
+    width:10%;
+    float:left;
+    text-align:right;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-small{
+    width:10%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-smedium{
+    width:17%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-medium{
+    width:20%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-slarge{
+    width:42%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-large{
+    width:30%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-sfill{
+    width:65%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-content-fill{
+    width:90%;
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}

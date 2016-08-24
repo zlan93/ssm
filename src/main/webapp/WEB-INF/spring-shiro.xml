@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->
+	<bean id="userRealm" class="com.eport.gnss.web.realm.UserRealm">
+	</bean>
+
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="7200000" />
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionMode" value="http" />
+		<property name="sessionManager" ref="sessionManager" />
+		<property name="realm" ref="userRealm" />
+	</bean>
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/home/indexPage" />
+		<property name="unauthorizedUrl" value="/home/indexPage" />
+       <!-- <property name="filters">
+            <map>
+                <entry key="ajaxAccess">
+                    <bean class="com.eport.gnss.web.filter.AjaxAccessControlFilter" />
+                </entry>
+            </map>
+        </property>-->
+		<property name="filterChainDefinitions">
+			<value>
+				/home/**=anon
+				/Content/**=anon
+				/index.jsp=anon
+				/logout=logout
+				/manage/**=authc
+				<!-- 如果页面不正常，就改这里的URL匹配条件=== -->
+			</value>
+		</property>
+	</bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+</beans>

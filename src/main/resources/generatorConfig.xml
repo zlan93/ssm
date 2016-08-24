@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_3.dtd" >
+
+<generatorConfiguration>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+   <classPathEntry location="./lib/ojdbc6.jar"/>
+
+    <context id="context1">
+        <commentGenerator>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 是否去除自动生成的注释 true=是 / false=否 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 是否添加数据注释 true=是 / false=否 -->
+            <property name="addRemarkComments" value="true"/>
+            <!-- 是否为POJO加上注解 true=是 / false=否 -->
+            <property name="addDbAnnotation" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                driverClass="oracle.jdbc.driver.OracleDriver"
+                connectionURL="jdbc:oracle:thin:@6.100.4.138:1521:UATDB"
+                userId="dev2test_proj"
+                password="dev2test_proj"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.eport.gnss.web.model.db.po" targetProject="src\main\java"/>
+        <sqlMapGenerator targetPackage="com.eport.gnss.web.model.db.mapper" targetProject="src\main\java"/>
+        <javaClientGenerator targetPackage="com.eport.gnss.web.model.db.dao" targetProject="src\main\java"
+                             type="XMLMAPPER"/>
+
+        <!-- GNSS_BASE -->
+        <!--% 生成全部表-->
+        <!--<table tableName="%" />-->
+
+        <table schema="dev2test_proj" tableName="GB_VEHICLE_INFO"/>
+        <!--<table schema="dev2test_proj" tableName="GB_USER_INFO"/>-->
+        <table schema="dev2test_proj" tableName="GB_ENT_INFO"/>
+        <!--需要重新生成已存在的XML时请先删除原有文件-->
+    </context>
+</generatorConfiguration>

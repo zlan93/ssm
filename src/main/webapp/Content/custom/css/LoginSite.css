@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+.login-page{
+	background-image: url('../img/login-bg.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+	background-size:100% 100%;    
+}
+
+.login-box{
+	margin:0 auto;
+	/* padding-top:30%; */
+	position:relative;
+	top:30%;
+}
+
+#loginbody{
+	background-color: transparent;
+}

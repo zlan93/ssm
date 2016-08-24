@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eport.gnss.web.model.db.dao.GbEntInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.eport.gnss.web.model.db.po.GbEntInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFIER_ID" property="modifierId" jdbcType="DECIMAL" />
+    <result column="MODIFIER" property="modifier" jdbcType="VARCHAR" />
+    <result column="ENT_NAME" property="entName" jdbcType="VARCHAR" />
+    <result column="ENT_NAME_SHORT" property="entNameShort" jdbcType="VARCHAR" />
+    <result column="ENT_TYPE_CODE" property="entTypeCode" jdbcType="VARCHAR" />
+    <result column="ENT_TYPE_NAME" property="entTypeName" jdbcType="VARCHAR" />
+    <result column="ENT_FILE" property="entFile" jdbcType="VARCHAR" />
+    <result column="ENT_IMAGE" property="entImage" jdbcType="VARCHAR" />
+    <result column="ENT_STATE" property="entState" jdbcType="VARCHAR" />
+    <result column="ENT_INTRODUCTION" property="entIntroduction" jdbcType="VARCHAR" />
+    <result column="LEADING_OFFICIAL" property="leadingOfficial" jdbcType="VARCHAR" />
+    <result column="LEADING_ID_CARD_NO" property="leadingIdCardNo" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_ID_CARD_NO" property="contactIdCardNo" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="MAIL" property="mail" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="POSTCODE" property="postcode" jdbcType="VARCHAR" />
+    <result column="REGIST_CAPITAL" property="registCapital" jdbcType="DECIMAL" />
+    <result column="REGIST_NUMBER" property="registNumber" jdbcType="VARCHAR" />
+    <result column="BOUNS_POINT" property="bounsPoint" jdbcType="DECIMAL" />
+    <result column="RANK_LEVEL" property="rankLevel" jdbcType="DECIMAL" />
+    <result column="THREE_IN_ONE_NO" property="threeInOneNo" jdbcType="VARCHAR" />
+    <result column="TAX_NO" property="taxNo" jdbcType="VARCHAR" />
+    <result column="REGIST_LIC_NO" property="registLicNo" jdbcType="VARCHAR" />
+    <result column="TARNSPORT_LIC_NO" property="tarnsportLicNo" jdbcType="VARCHAR" />
+    <result column="REAL_STATUS" property="realStatus" jdbcType="VARCHAR" />
+    <result column="CUSTOMS_CODE" property="customsCode" jdbcType="VARCHAR" />
+    <result column="CUSTOMS_NAME" property="customsName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, STATUS, CREATE_TIME, CREATOR_ID, CREATOR, MODIFY_TIME, MODIFIER_ID, MODIFIER, 
+    ENT_NAME, ENT_NAME_SHORT, ENT_TYPE_CODE, ENT_TYPE_NAME, ENT_FILE, ENT_IMAGE, ENT_STATE, 
+    ENT_INTRODUCTION, LEADING_OFFICIAL, LEADING_ID_CARD_NO, CONTACT, CONTACT_ID_CARD_NO, 
+    ADDRESS, PHONE, MAIL, FAX, ORG_ID, ORG_NAME, REMARK, POSTCODE, REGIST_CAPITAL, REGIST_NUMBER, 
+    BOUNS_POINT, RANK_LEVEL, THREE_IN_ONE_NO, TAX_NO, REGIST_LIC_NO, TARNSPORT_LIC_NO, 
+    REAL_STATUS, CUSTOMS_CODE, CUSTOMS_NAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.eport.gnss.web.model.db.po.GbEntInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DEV2TEST_PROJ.GB_ENT_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEV2TEST_PROJ.GB_ENT_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from DEV2TEST_PROJ.GB_ENT_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.eport.gnss.web.model.db.po.GbEntInfoExample" >
+    delete from DEV2TEST_PROJ.GB_ENT_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.eport.gnss.web.model.db.po.GbEntInfo" >
+    insert into DEV2TEST_PROJ.GB_ENT_INFO (ID, STATUS, CREATE_TIME, 
+      CREATOR_ID, CREATOR, MODIFY_TIME, 
+      MODIFIER_ID, MODIFIER, ENT_NAME, 
+      ENT_NAME_SHORT, ENT_TYPE_CODE, ENT_TYPE_NAME, 
+      ENT_FILE, ENT_IMAGE, ENT_STATE, 
+      ENT_INTRODUCTION, LEADING_OFFICIAL, LEADING_ID_CARD_NO, 
+      CONTACT, CONTACT_ID_CARD_NO, ADDRESS, 
+      PHONE, MAIL, FAX, ORG_ID, 
+      ORG_NAME, REMARK, POSTCODE, 
+      REGIST_CAPITAL, REGIST_NUMBER, BOUNS_POINT, 
+      RANK_LEVEL, THREE_IN_ONE_NO, TAX_NO, 
+      REGIST_LIC_NO, TARNSPORT_LIC_NO, REAL_STATUS, 
+      CUSTOMS_CODE, CUSTOMS_NAME)
+    values (#{id,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{creatorId,jdbcType=DECIMAL}, #{creator,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{modifierId,jdbcType=DECIMAL}, #{modifier,jdbcType=VARCHAR}, #{entName,jdbcType=VARCHAR}, 
+      #{entNameShort,jdbcType=VARCHAR}, #{entTypeCode,jdbcType=VARCHAR}, #{entTypeName,jdbcType=VARCHAR}, 
+      #{entFile,jdbcType=VARCHAR}, #{entImage,jdbcType=VARCHAR}, #{entState,jdbcType=VARCHAR}, 
+      #{entIntroduction,jdbcType=VARCHAR}, #{leadingOfficial,jdbcType=VARCHAR}, #{leadingIdCardNo,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{contactIdCardNo,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, 
+      #{registCapital,jdbcType=DECIMAL}, #{registNumber,jdbcType=VARCHAR}, #{bounsPoint,jdbcType=DECIMAL}, 
+      #{rankLevel,jdbcType=DECIMAL}, #{threeInOneNo,jdbcType=VARCHAR}, #{taxNo,jdbcType=VARCHAR}, 
+      #{registLicNo,jdbcType=VARCHAR}, #{tarnsportLicNo,jdbcType=VARCHAR}, #{realStatus,jdbcType=VARCHAR}, 
+      #{customsCode,jdbcType=VARCHAR}, #{customsName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eport.gnss.web.model.db.po.GbEntInfo" >
+    insert into DEV2TEST_PROJ.GB_ENT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID,
+      </if>
+      <if test="modifier != null" >
+        MODIFIER,
+      </if>
+      <if test="entName != null" >
+        ENT_NAME,
+      </if>
+      <if test="entNameShort != null" >
+        ENT_NAME_SHORT,
+      </if>
+      <if test="entTypeCode != null" >
+        ENT_TYPE_CODE,
+      </if>
+      <if test="entTypeName != null" >
+        ENT_TYPE_NAME,
+      </if>
+      <if test="entFile != null" >
+        ENT_FILE,
+      </if>
+      <if test="entImage != null" >
+        ENT_IMAGE,
+      </if>
+      <if test="entState != null" >
+        ENT_STATE,
+      </if>
+      <if test="entIntroduction != null" >
+        ENT_INTRODUCTION,
+      </if>
+      <if test="leadingOfficial != null" >
+        LEADING_OFFICIAL,
+      </if>
+      <if test="leadingIdCardNo != null" >
+        LEADING_ID_CARD_NO,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactIdCardNo != null" >
+        CONTACT_ID_CARD_NO,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="mail != null" >
+        MAIL,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="postcode != null" >
+        POSTCODE,
+      </if>
+      <if test="registCapital != null" >
+        REGIST_CAPITAL,
+      </if>
+      <if test="registNumber != null" >
+        REGIST_NUMBER,
+      </if>
+      <if test="bounsPoint != null" >
+        BOUNS_POINT,
+      </if>
+      <if test="rankLevel != null" >
+        RANK_LEVEL,
+      </if>
+      <if test="threeInOneNo != null" >
+        THREE_IN_ONE_NO,
+      </if>
+      <if test="taxNo != null" >
+        TAX_NO,
+      </if>
+      <if test="registLicNo != null" >
+        REGIST_LIC_NO,
+      </if>
+      <if test="tarnsportLicNo != null" >
+        TARNSPORT_LIC_NO,
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS,
+      </if>
+      <if test="customsCode != null" >
+        CUSTOMS_CODE,
+      </if>
+      <if test="customsName != null" >
+        CUSTOMS_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierId != null" >
+        #{modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="entName != null" >
+        #{entName,jdbcType=VARCHAR},
+      </if>
+      <if test="entNameShort != null" >
+        #{entNameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="entTypeCode != null" >
+        #{entTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="entTypeName != null" >
+        #{entTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="entFile != null" >
+        #{entFile,jdbcType=VARCHAR},
+      </if>
+      <if test="entImage != null" >
+        #{entImage,jdbcType=VARCHAR},
+      </if>
+      <if test="entState != null" >
+        #{entState,jdbcType=VARCHAR},
+      </if>
+      <if test="entIntroduction != null" >
+        #{entIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingOfficial != null" >
+        #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingIdCardNo != null" >
+        #{leadingIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactIdCardNo != null" >
+        #{contactIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="registCapital != null" >
+        #{registCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="registNumber != null" >
+        #{registNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bounsPoint != null" >
+        #{bounsPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="rankLevel != null" >
+        #{rankLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="threeInOneNo != null" >
+        #{threeInOneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="registLicNo != null" >
+        #{registLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tarnsportLicNo != null" >
+        #{tarnsportLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customsCode != null" >
+        #{customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customsName != null" >
+        #{customsName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.eport.gnss.web.model.db.po.GbEntInfoExample" resultType="java.lang.Integer" >
+    select count(*) from DEV2TEST_PROJ.GB_ENT_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DEV2TEST_PROJ.GB_ENT_INFO
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creatorId != null" >
+        CREATOR_ID = #{record.creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.creator != null" >
+        CREATOR = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+        MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifierId != null" >
+        MODIFIER_ID = #{record.modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifier != null" >
+        MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entName != null" >
+        ENT_NAME = #{record.entName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entNameShort != null" >
+        ENT_NAME_SHORT = #{record.entNameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entTypeCode != null" >
+        ENT_TYPE_CODE = #{record.entTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entTypeName != null" >
+        ENT_TYPE_NAME = #{record.entTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entFile != null" >
+        ENT_FILE = #{record.entFile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entImage != null" >
+        ENT_IMAGE = #{record.entImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entState != null" >
+        ENT_STATE = #{record.entState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entIntroduction != null" >
+        ENT_INTRODUCTION = #{record.entIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leadingOfficial != null" >
+        LEADING_OFFICIAL = #{record.leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leadingIdCardNo != null" >
+        LEADING_ID_CARD_NO = #{record.leadingIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactIdCardNo != null" >
+        CONTACT_ID_CARD_NO = #{record.contactIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        MAIL = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null" >
+        FAX = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgName != null" >
+        ORG_NAME = #{record.orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postcode != null" >
+        POSTCODE = #{record.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registCapital != null" >
+        REGIST_CAPITAL = #{record.registCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="record.registNumber != null" >
+        REGIST_NUMBER = #{record.registNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bounsPoint != null" >
+        BOUNS_POINT = #{record.bounsPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rankLevel != null" >
+        RANK_LEVEL = #{record.rankLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.threeInOneNo != null" >
+        THREE_IN_ONE_NO = #{record.threeInOneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxNo != null" >
+        TAX_NO = #{record.taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registLicNo != null" >
+        REGIST_LIC_NO = #{record.registLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tarnsportLicNo != null" >
+        TARNSPORT_LIC_NO = #{record.tarnsportLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realStatus != null" >
+        REAL_STATUS = #{record.realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customsCode != null" >
+        CUSTOMS_CODE = #{record.customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customsName != null" >
+        CUSTOMS_NAME = #{record.customsName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DEV2TEST_PROJ.GB_ENT_INFO
+    set ID = #{record.id,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      CREATOR_ID = #{record.creatorId,jdbcType=DECIMAL},
+      CREATOR = #{record.creator,jdbcType=VARCHAR},
+      MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      MODIFIER_ID = #{record.modifierId,jdbcType=DECIMAL},
+      MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      ENT_NAME = #{record.entName,jdbcType=VARCHAR},
+      ENT_NAME_SHORT = #{record.entNameShort,jdbcType=VARCHAR},
+      ENT_TYPE_CODE = #{record.entTypeCode,jdbcType=VARCHAR},
+      ENT_TYPE_NAME = #{record.entTypeName,jdbcType=VARCHAR},
+      ENT_FILE = #{record.entFile,jdbcType=VARCHAR},
+      ENT_IMAGE = #{record.entImage,jdbcType=VARCHAR},
+      ENT_STATE = #{record.entState,jdbcType=VARCHAR},
+      ENT_INTRODUCTION = #{record.entIntroduction,jdbcType=VARCHAR},
+      LEADING_OFFICIAL = #{record.leadingOfficial,jdbcType=VARCHAR},
+      LEADING_ID_CARD_NO = #{record.leadingIdCardNo,jdbcType=VARCHAR},
+      CONTACT = #{record.contact,jdbcType=VARCHAR},
+      CONTACT_ID_CARD_NO = #{record.contactIdCardNo,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      PHONE = #{record.phone,jdbcType=VARCHAR},
+      MAIL = #{record.mail,jdbcType=VARCHAR},
+      FAX = #{record.fax,jdbcType=VARCHAR},
+      ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      ORG_NAME = #{record.orgName,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      POSTCODE = #{record.postcode,jdbcType=VARCHAR},
+      REGIST_CAPITAL = #{record.registCapital,jdbcType=DECIMAL},
+      REGIST_NUMBER = #{record.registNumber,jdbcType=VARCHAR},
+      BOUNS_POINT = #{record.bounsPoint,jdbcType=DECIMAL},
+      RANK_LEVEL = #{record.rankLevel,jdbcType=DECIMAL},
+      THREE_IN_ONE_NO = #{record.threeInOneNo,jdbcType=VARCHAR},
+      TAX_NO = #{record.taxNo,jdbcType=VARCHAR},
+      REGIST_LIC_NO = #{record.registLicNo,jdbcType=VARCHAR},
+      TARNSPORT_LIC_NO = #{record.tarnsportLicNo,jdbcType=VARCHAR},
+      REAL_STATUS = #{record.realStatus,jdbcType=VARCHAR},
+      CUSTOMS_CODE = #{record.customsCode,jdbcType=VARCHAR},
+      CUSTOMS_NAME = #{record.customsName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eport.gnss.web.model.db.po.GbEntInfo" >
+    update DEV2TEST_PROJ.GB_ENT_INFO
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID = #{creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID = #{modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="entName != null" >
+        ENT_NAME = #{entName,jdbcType=VARCHAR},
+      </if>
+      <if test="entNameShort != null" >
+        ENT_NAME_SHORT = #{entNameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="entTypeCode != null" >
+        ENT_TYPE_CODE = #{entTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="entTypeName != null" >
+        ENT_TYPE_NAME = #{entTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="entFile != null" >
+        ENT_FILE = #{entFile,jdbcType=VARCHAR},
+      </if>
+      <if test="entImage != null" >
+        ENT_IMAGE = #{entImage,jdbcType=VARCHAR},
+      </if>
+      <if test="entState != null" >
+        ENT_STATE = #{entState,jdbcType=VARCHAR},
+      </if>
+      <if test="entIntroduction != null" >
+        ENT_INTRODUCTION = #{entIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingOfficial != null" >
+        LEADING_OFFICIAL = #{leadingOfficial,jdbcType=VARCHAR},
+      </if>
+      <if test="leadingIdCardNo != null" >
+        LEADING_ID_CARD_NO = #{leadingIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactIdCardNo != null" >
+        CONTACT_ID_CARD_NO = #{contactIdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        MAIL = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        POSTCODE = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="registCapital != null" >
+        REGIST_CAPITAL = #{registCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="registNumber != null" >
+        REGIST_NUMBER = #{registNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bounsPoint != null" >
+        BOUNS_POINT = #{bounsPoint,jdbcType=DECIMAL},
+      </if>
+      <if test="rankLevel != null" >
+        RANK_LEVEL = #{rankLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="threeInOneNo != null" >
+        THREE_IN_ONE_NO = #{threeInOneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        TAX_NO = #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="registLicNo != null" >
+        REGIST_LIC_NO = #{registLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tarnsportLicNo != null" >
+        TARNSPORT_LIC_NO = #{tarnsportLicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customsCode != null" >
+        CUSTOMS_CODE = #{customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customsName != null" >
+        CUSTOMS_NAME = #{customsName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eport.gnss.web.model.db.po.GbEntInfo" >
+    update DEV2TEST_PROJ.GB_ENT_INFO
+    set STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATOR_ID = #{creatorId,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      MODIFIER_ID = #{modifierId,jdbcType=DECIMAL},
+      MODIFIER = #{modifier,jdbcType=VARCHAR},
+      ENT_NAME = #{entName,jdbcType=VARCHAR},
+      ENT_NAME_SHORT = #{entNameShort,jdbcType=VARCHAR},
+      ENT_TYPE_CODE = #{entTypeCode,jdbcType=VARCHAR},
+      ENT_TYPE_NAME = #{entTypeName,jdbcType=VARCHAR},
+      ENT_FILE = #{entFile,jdbcType=VARCHAR},
+      ENT_IMAGE = #{entImage,jdbcType=VARCHAR},
+      ENT_STATE = #{entState,jdbcType=VARCHAR},
+      ENT_INTRODUCTION = #{entIntroduction,jdbcType=VARCHAR},
+      LEADING_OFFICIAL = #{leadingOfficial,jdbcType=VARCHAR},
+      LEADING_ID_CARD_NO = #{leadingIdCardNo,jdbcType=VARCHAR},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      CONTACT_ID_CARD_NO = #{contactIdCardNo,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      MAIL = #{mail,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=VARCHAR},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      POSTCODE = #{postcode,jdbcType=VARCHAR},
+      REGIST_CAPITAL = #{registCapital,jdbcType=DECIMAL},
+      REGIST_NUMBER = #{registNumber,jdbcType=VARCHAR},
+      BOUNS_POINT = #{bounsPoint,jdbcType=DECIMAL},
+      RANK_LEVEL = #{rankLevel,jdbcType=DECIMAL},
+      THREE_IN_ONE_NO = #{threeInOneNo,jdbcType=VARCHAR},
+      TAX_NO = #{taxNo,jdbcType=VARCHAR},
+      REGIST_LIC_NO = #{registLicNo,jdbcType=VARCHAR},
+      TARNSPORT_LIC_NO = #{tarnsportLicNo,jdbcType=VARCHAR},
+      REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      CUSTOMS_CODE = #{customsCode,jdbcType=VARCHAR},
+      CUSTOMS_NAME = #{customsName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

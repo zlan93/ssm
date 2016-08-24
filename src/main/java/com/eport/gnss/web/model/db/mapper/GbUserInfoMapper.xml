@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eport.gnss.web.model.db.dao.GbUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.eport.gnss.web.model.db.po.GbUserInfo" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="DECIMAL" />
+    <result column="CREATOR" property="creator" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFIER_ID" property="modifierId" jdbcType="DECIMAL" />
+    <result column="MODIFIER" property="modifier" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_PWD" property="userPwd" jdbcType="VARCHAR" />
+    <result column="USER_STATE" property="userState" jdbcType="VARCHAR" />
+    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+    <result column="ENT_ID" property="entId" jdbcType="VARCHAR" />
+    <result column="ENT_NAME" property="entName" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="MAIL" property="mail" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="LOGIN_STATE" property="loginState" jdbcType="VARCHAR" />
+    <result column="LOGIN_DEVICE" property="loginDevice" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="USER_ROLE_TYPE" property="userRoleType" jdbcType="VARCHAR" />
+    <result column="SAFE_TOKEN" property="safeToken" jdbcType="VARCHAR" />
+    <result column="SAFE_QUESTION" property="safeQuestion" jdbcType="VARCHAR" />
+    <result column="SAFE_ANSWER" property="safeAnswer" jdbcType="VARCHAR" />
+    <result column="SAFE_TOKEN_TIME" property="safeTokenTime" jdbcType="TIMESTAMP" />
+    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+    <result column="ID_CARD_NO" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="APP_PUSH_ID" property="appPushId" jdbcType="VARCHAR" />
+    <result column="LOGIN_MODE" property="loginMode" jdbcType="VARCHAR" />
+    <result column="REAL_STATUS" property="realStatus" jdbcType="VARCHAR" />
+    <result column="CAS_CARD" property="casCard" jdbcType="VARCHAR" />
+    <result column="CAS_TOKEN" property="casToken" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, STATUS, CREATE_TIME, CREATOR_ID, CREATOR, MODIFY_TIME, MODIFIER_ID, MODIFIER, 
+    USER_NAME, USER_PWD, USER_STATE, NICK_NAME, ROLE_ID, ROLE_NAME, ENT_ID, ENT_NAME, 
+    ORG_ID, ORG_NAME, MOBILE, MAIL, REMARK, LOGIN_STATE, LOGIN_DEVICE, LAST_LOGIN_TIME, 
+    USER_TYPE, USER_ROLE_TYPE, SAFE_TOKEN, SAFE_QUESTION, SAFE_ANSWER, SAFE_TOKEN_TIME, 
+    REAL_NAME, ID_CARD_NO, APP_PUSH_ID, LOGIN_MODE, REAL_STATUS, CAS_CARD, CAS_TOKEN
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.eport.gnss.web.model.db.po.GbUserInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DEV2TEST_PROJ.GB_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEV2TEST_PROJ.GB_USER_INFO
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from DEV2TEST_PROJ.GB_USER_INFO
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.eport.gnss.web.model.db.po.GbUserInfoExample" >
+    delete from DEV2TEST_PROJ.GB_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.eport.gnss.web.model.db.po.GbUserInfo" >
+    insert into DEV2TEST_PROJ.GB_USER_INFO (ID, STATUS, CREATE_TIME, 
+      CREATOR_ID, CREATOR, MODIFY_TIME, 
+      MODIFIER_ID, MODIFIER, USER_NAME, 
+      USER_PWD, USER_STATE, NICK_NAME, 
+      ROLE_ID, ROLE_NAME, ENT_ID, 
+      ENT_NAME, ORG_ID, ORG_NAME, 
+      MOBILE, MAIL, REMARK, 
+      LOGIN_STATE, LOGIN_DEVICE, LAST_LOGIN_TIME, 
+      USER_TYPE, USER_ROLE_TYPE, SAFE_TOKEN, 
+      SAFE_QUESTION, SAFE_ANSWER, SAFE_TOKEN_TIME, 
+      REAL_NAME, ID_CARD_NO, APP_PUSH_ID, 
+      LOGIN_MODE, REAL_STATUS, CAS_CARD, 
+      CAS_TOKEN)
+    values (USER_SEQUENCE.NEXTVAL, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{creatorId,jdbcType=DECIMAL}, #{creator,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{modifierId,jdbcType=DECIMAL}, #{modifier,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userPwd,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{entId,jdbcType=VARCHAR}, 
+      #{entName,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{loginState,jdbcType=VARCHAR}, #{loginDevice,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{userType,jdbcType=VARCHAR}, #{userRoleType,jdbcType=VARCHAR}, #{safeToken,jdbcType=VARCHAR}, 
+      #{safeQuestion,jdbcType=VARCHAR}, #{safeAnswer,jdbcType=VARCHAR}, #{safeTokenTime,jdbcType=TIMESTAMP}, 
+      #{realName,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, #{appPushId,jdbcType=VARCHAR}, 
+      #{loginMode,jdbcType=VARCHAR}, #{realStatus,jdbcType=VARCHAR}, #{casCard,jdbcType=VARCHAR}, 
+      #{casToken,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eport.gnss.web.model.db.po.GbUserInfo" >
+    insert into DEV2TEST_PROJ.GB_USER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID,
+      </if>
+      <if test="creator != null" >
+        CREATOR,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID,
+      </if>
+      <if test="modifier != null" >
+        MODIFIER,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userPwd != null" >
+        USER_PWD,
+      </if>
+      <if test="userState != null" >
+        USER_STATE,
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME,
+      </if>
+      <if test="entId != null" >
+        ENT_ID,
+      </if>
+      <if test="entName != null" >
+        ENT_NAME,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="mail != null" >
+        MAIL,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="loginState != null" >
+        LOGIN_STATE,
+      </if>
+      <if test="loginDevice != null" >
+        LOGIN_DEVICE,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="userRoleType != null" >
+        USER_ROLE_TYPE,
+      </if>
+      <if test="safeToken != null" >
+        SAFE_TOKEN,
+      </if>
+      <if test="safeQuestion != null" >
+        SAFE_QUESTION,
+      </if>
+      <if test="safeAnswer != null" >
+        SAFE_ANSWER,
+      </if>
+      <if test="safeTokenTime != null" >
+        SAFE_TOKEN_TIME,
+      </if>
+      <if test="realName != null" >
+        REAL_NAME,
+      </if>
+      <if test="idCardNo != null" >
+        ID_CARD_NO,
+      </if>
+      <if test="appPushId != null" >
+        APP_PUSH_ID,
+      </if>
+      <if test="loginMode != null" >
+        LOGIN_MODE,
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS,
+      </if>
+      <if test="casCard != null" >
+        CAS_CARD,
+      </if>
+      <if test="casToken != null" >
+        CAS_TOKEN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierId != null" >
+        #{modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="entId != null" >
+        #{entId,jdbcType=VARCHAR},
+      </if>
+      <if test="entName != null" >
+        #{entName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="loginState != null" >
+        #{loginState,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDevice != null" >
+        #{loginDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userRoleType != null" >
+        #{userRoleType,jdbcType=VARCHAR},
+      </if>
+      <if test="safeToken != null" >
+        #{safeToken,jdbcType=VARCHAR},
+      </if>
+      <if test="safeQuestion != null" >
+        #{safeQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="safeAnswer != null" >
+        #{safeAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="safeTokenTime != null" >
+        #{safeTokenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="appPushId != null" >
+        #{appPushId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginMode != null" >
+        #{loginMode,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="casCard != null" >
+        #{casCard,jdbcType=VARCHAR},
+      </if>
+      <if test="casToken != null" >
+        #{casToken,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.eport.gnss.web.model.db.po.GbUserInfoExample" resultType="java.lang.Integer" >
+    select count(*) from DEV2TEST_PROJ.GB_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DEV2TEST_PROJ.GB_USER_INFO
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creatorId != null" >
+        CREATOR_ID = #{record.creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.creator != null" >
+        CREATOR = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+        MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifierId != null" >
+        MODIFIER_ID = #{record.modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifier != null" >
+        MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPwd != null" >
+        USER_PWD = #{record.userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userState != null" >
+        USER_STATE = #{record.userState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null" >
+        NICK_NAME = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleName != null" >
+        ROLE_NAME = #{record.roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entId != null" >
+        ENT_ID = #{record.entId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entName != null" >
+        ENT_NAME = #{record.entName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgName != null" >
+        ORG_NAME = #{record.orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        MAIL = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginState != null" >
+        LOGIN_STATE = #{record.loginState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginDevice != null" >
+        LOGIN_DEVICE = #{record.loginDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userType != null" >
+        USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userRoleType != null" >
+        USER_ROLE_TYPE = #{record.userRoleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safeToken != null" >
+        SAFE_TOKEN = #{record.safeToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safeQuestion != null" >
+        SAFE_QUESTION = #{record.safeQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safeAnswer != null" >
+        SAFE_ANSWER = #{record.safeAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safeTokenTime != null" >
+        SAFE_TOKEN_TIME = #{record.safeTokenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.realName != null" >
+        REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardNo != null" >
+        ID_CARD_NO = #{record.idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appPushId != null" >
+        APP_PUSH_ID = #{record.appPushId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginMode != null" >
+        LOGIN_MODE = #{record.loginMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realStatus != null" >
+        REAL_STATUS = #{record.realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.casCard != null" >
+        CAS_CARD = #{record.casCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.casToken != null" >
+        CAS_TOKEN = #{record.casToken,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DEV2TEST_PROJ.GB_USER_INFO
+    set ID = #{record.id,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      CREATOR_ID = #{record.creatorId,jdbcType=DECIMAL},
+      CREATOR = #{record.creator,jdbcType=VARCHAR},
+      MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      MODIFIER_ID = #{record.modifierId,jdbcType=DECIMAL},
+      MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      USER_PWD = #{record.userPwd,jdbcType=VARCHAR},
+      USER_STATE = #{record.userState,jdbcType=VARCHAR},
+      NICK_NAME = #{record.nickName,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      ROLE_NAME = #{record.roleName,jdbcType=VARCHAR},
+      ENT_ID = #{record.entId,jdbcType=VARCHAR},
+      ENT_NAME = #{record.entName,jdbcType=VARCHAR},
+      ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      ORG_NAME = #{record.orgName,jdbcType=VARCHAR},
+      MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      MAIL = #{record.mail,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      LOGIN_STATE = #{record.loginState,jdbcType=VARCHAR},
+      LOGIN_DEVICE = #{record.loginDevice,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      USER_ROLE_TYPE = #{record.userRoleType,jdbcType=VARCHAR},
+      SAFE_TOKEN = #{record.safeToken,jdbcType=VARCHAR},
+      SAFE_QUESTION = #{record.safeQuestion,jdbcType=VARCHAR},
+      SAFE_ANSWER = #{record.safeAnswer,jdbcType=VARCHAR},
+      SAFE_TOKEN_TIME = #{record.safeTokenTime,jdbcType=TIMESTAMP},
+      REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      ID_CARD_NO = #{record.idCardNo,jdbcType=VARCHAR},
+      APP_PUSH_ID = #{record.appPushId,jdbcType=VARCHAR},
+      LOGIN_MODE = #{record.loginMode,jdbcType=VARCHAR},
+      REAL_STATUS = #{record.realStatus,jdbcType=VARCHAR},
+      CAS_CARD = #{record.casCard,jdbcType=VARCHAR},
+      CAS_TOKEN = #{record.casToken,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eport.gnss.web.model.db.po.GbUserInfo" >
+    update DEV2TEST_PROJ.GB_USER_INFO
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID = #{creatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID = #{modifierId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        USER_PWD = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        USER_STATE = #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="entId != null" >
+        ENT_ID = #{entId,jdbcType=VARCHAR},
+      </if>
+      <if test="entName != null" >
+        ENT_NAME = #{entName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        MAIL = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="loginState != null" >
+        LOGIN_STATE = #{loginState,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDevice != null" >
+        LOGIN_DEVICE = #{loginDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userRoleType != null" >
+        USER_ROLE_TYPE = #{userRoleType,jdbcType=VARCHAR},
+      </if>
+      <if test="safeToken != null" >
+        SAFE_TOKEN = #{safeToken,jdbcType=VARCHAR},
+      </if>
+      <if test="safeQuestion != null" >
+        SAFE_QUESTION = #{safeQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="safeAnswer != null" >
+        SAFE_ANSWER = #{safeAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="safeTokenTime != null" >
+        SAFE_TOKEN_TIME = #{safeTokenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realName != null" >
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        ID_CARD_NO = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="appPushId != null" >
+        APP_PUSH_ID = #{appPushId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginMode != null" >
+        LOGIN_MODE = #{loginMode,jdbcType=VARCHAR},
+      </if>
+      <if test="realStatus != null" >
+        REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="casCard != null" >
+        CAS_CARD = #{casCard,jdbcType=VARCHAR},
+      </if>
+      <if test="casToken != null" >
+        CAS_TOKEN = #{casToken,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eport.gnss.web.model.db.po.GbUserInfo" >
+    update DEV2TEST_PROJ.GB_USER_INFO
+    set STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATOR_ID = #{creatorId,jdbcType=DECIMAL},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      MODIFIER_ID = #{modifierId,jdbcType=DECIMAL},
+      MODIFIER = #{modifier,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_PWD = #{userPwd,jdbcType=VARCHAR},
+      USER_STATE = #{userState,jdbcType=VARCHAR},
+      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      ENT_ID = #{entId,jdbcType=VARCHAR},
+      ENT_NAME = #{entName,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=VARCHAR},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      MAIL = #{mail,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LOGIN_STATE = #{loginState,jdbcType=VARCHAR},
+      LOGIN_DEVICE = #{loginDevice,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      USER_ROLE_TYPE = #{userRoleType,jdbcType=VARCHAR},
+      SAFE_TOKEN = #{safeToken,jdbcType=VARCHAR},
+      SAFE_QUESTION = #{safeQuestion,jdbcType=VARCHAR},
+      SAFE_ANSWER = #{safeAnswer,jdbcType=VARCHAR},
+      SAFE_TOKEN_TIME = #{safeTokenTime,jdbcType=TIMESTAMP},
+      REAL_NAME = #{realName,jdbcType=VARCHAR},
+      ID_CARD_NO = #{idCardNo,jdbcType=VARCHAR},
+      APP_PUSH_ID = #{appPushId,jdbcType=VARCHAR},
+      LOGIN_MODE = #{loginMode,jdbcType=VARCHAR},
+      REAL_STATUS = #{realStatus,jdbcType=VARCHAR},
+      CAS_CARD = #{casCard,jdbcType=VARCHAR},
+      CAS_TOKEN = #{casToken,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
