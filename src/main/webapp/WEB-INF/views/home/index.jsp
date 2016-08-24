@@ -22,7 +22,7 @@
 <br>
 <a href="/ssm/home/update">正常的save</a>
 <br><br>
-<a href="/ssm/home/update1">错误，需要回滚的save</a>
+<a href="/ssm/home/update1">错误，需要回滚的save（验证事物回滚）</a>
 
 
 <script type="text/javascript">
