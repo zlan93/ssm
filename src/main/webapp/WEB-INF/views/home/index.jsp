@@ -10,8 +10,6 @@
     <link rel="Shortcut Icon" href="<%=path%>/Content/custom/img/favicon.ico"/>
     <script src="<%=path%>/Content/custom/js/jquery1.4.js" type="text/javascript"></script>
     <script src="<%=path%>/Content/custom/js/ild.js" type="text/javascript"></script>
-    <%--<link rel="stylesheet" type="text/css" href="<%=path%>/Content/custom/css/reset.css"/>--%>
-    <%--<link rel="stylesheet" type="text/css" href="<%=path%>/Content/custom/css/index.css"/>--%>
 </head>
 <body>
 <h2>Hello World!11111</h2>

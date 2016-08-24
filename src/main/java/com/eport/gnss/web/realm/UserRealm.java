@@ -34,31 +34,6 @@ public class UserRealm extends AuthorizingRealm {
                 String currentUsername = (String) super.getAvailablePrincipal(principals);
                 SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
 
-//                UserSession userSession = UserSession.getUserSession();
-//                if (null != userSession && userSession.getPermissionList().size() > 0) {
-//                        simpleAuthorInfo.addStringPermissions(userSession.getPermissionList());
-//                } else {
-                        // ===旧的查数据库====
-//                        GbUserInfo user = userInfoService.loadByUserName(currentUsername);
-//                        if (user.getUserType() != null && "SUPERADMIN".equals(user.getUserType().toUpperCase())) {
-//                                simpleAuthorInfo.addStringPermission("manage");
-//                                simpleAuthorInfo.addStringPermission("home");
-//                        } else {
-//                                if (user.getRoleId() != null && !user.getRoleId().isEmpty()) {
-//                                        GbRoleAuthMapExample example = new GbRoleAuthMapExample();
-//                                        example.or().andRoleIdEqualTo(user.getRoleId());
-//                                        List<GbRoleAuthMap> list = roleAuthMapService.queryList(example);
-//                                        if (list != null && !list.isEmpty()) {
-//                                                for (int i = 0; i < list.size(); i++) {
-//                                                        simpleAuthorInfo.addStringPermission(list.get(i).getPermission());
-//                                                }
-//                                        }
-//                                }
-//                        }
-                        // ------------------------
-
-//                }
-
                 return simpleAuthorInfo;
         }
 
