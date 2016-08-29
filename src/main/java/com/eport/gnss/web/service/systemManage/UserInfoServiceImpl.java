@@ -55,6 +55,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             return null;
     }
 
+    //正常的update
     public int saveByPk(GbUserInfo record) {
         int result = 0;
         if (null == record.getId() || 0 == record.getId() || null == record.getCreateTime()) {
@@ -65,11 +66,12 @@ public class UserInfoServiceImpl implements UserInfoService {
         return result;
     }
 
+    //测试事物回滚的update
     public int saveByPk1(GbUserInfo record) {
         int result = 0;
         if (null == record.getId() || 0 == record.getId() || null == record.getCreateTime()) {
             result = this.dbMapper.insert(record);
-            int i=4/0;
+            int i=4/0;  //测试事物回滚的
         } else {
             result = this.dbMapper.updateByPrimaryKeySelective(record);
         }

@@ -56,6 +56,7 @@ return mav;
         return "home/index";
     }
 
+    //正常的update
     @RequestMapping("/home/update")
     public Object doUpdate(HttpServletRequest request){
 
@@ -83,6 +84,8 @@ return mav;
         }
         return mav;
     }
+
+    //测试事物回滚的update
     @RequestMapping("/home/update1")
     public Object doUpdate1(HttpServletRequest request){
 
