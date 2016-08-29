@@ -7,9 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>ssm</title>
-    <link rel="Shortcut Icon" href="<%=path%>/Content/custom/img/favicon.ico"/>
     <script src="<%=path%>/Content/custom/js/jquery1.4.js" type="text/javascript"></script>
-    <script src="<%=path%>/Content/custom/js/ild.js" type="text/javascript"></script>
 </head>
 <body>
 <h2>Hello World!11111</h2>

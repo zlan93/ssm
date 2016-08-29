@@ -1,5 +1,6 @@
 package com.eport.gnss.web.controllers;
 
+import com.eport.gnss.web.aoplog.SystemLog;
 import com.eport.gnss.web.aoplog.SystemLogAspect;
 import com.eport.gnss.web.model.db.po.GbUserInfo;
 import com.eport.gnss.web.service.systemManage.UserInfoService;
@@ -56,6 +57,7 @@ return mav;
         return "home/index";
     }
 
+    @SystemLog(logName = "正常的update ")
     //正常的update
     @RequestMapping("/home/update")
     public Object doUpdate(HttpServletRequest request){
@@ -85,6 +87,7 @@ return mav;
         return mav;
     }
 
+    @SystemLog(logName = "测试事物回滚")
     //测试事物回滚的update
     @RequestMapping("/home/update1")
     public Object doUpdate1(HttpServletRequest request){
