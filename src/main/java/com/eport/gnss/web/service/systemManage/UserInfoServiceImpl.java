@@ -55,7 +55,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             return null;
     }
 
-    //正常的update
+    //正常的save
     public int saveByPk(GbUserInfo record) {
         int result = 0;
         if (null == record.getId() || 0 == record.getId() || null == record.getCreateTime()) {
@@ -66,7 +66,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         return result;
     }
 
-    //测试事物回滚的update
+    //测试事物回滚的save
     public int saveByPk1(GbUserInfo record) {
         int result = 0;
         if (null == record.getId() || 0 == record.getId() || null == record.getCreateTime()) {
