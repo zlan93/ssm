@@ -38,7 +38,9 @@ public class TestController  {
             currentUser.login(token);
         }
         catch (UnknownAccountException unknownAccountException){
-
+            System.out.println("UnknownAccountException");
+            mav.addObject("mes","UnknownAccountException");
+            mav.addObject("res",false);
         }
         if (currentUser.isAuthenticated()){
             System.out.println("login");

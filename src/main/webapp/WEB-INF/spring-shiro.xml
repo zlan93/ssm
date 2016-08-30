@@ -22,20 +22,20 @@
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/home/indexPage" />
 		<property name="unauthorizedUrl" value="/home/indexPage" />
-       <!-- <property name="filters">
+        <property name="filters">
             <map>
                 <entry key="ajaxAccess">
                     <bean class="com.eport.gnss.web.filter.AjaxAccessControlFilter" />
                 </entry>
             </map>
-        </property>-->
+        </property>
 		<property name="filterChainDefinitions">
 			<value>
 				/home/**=anon
 				/Content/**=anon
 				/index.jsp=anon
 				/logout=logout
-				/manage/**=authc
+				/manage/**=ajaxAccess
 				<!-- 如果页面不正常，就改这里的URL匹配条件=== -->
 			</value>
 		</property>

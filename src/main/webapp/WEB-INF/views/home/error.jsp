@@ -14,5 +14,6 @@
 <body>
 <h1>login error </h1>
 <h2><%=request.getAttribute("res")%></h2>
+<h2><%=request.getAttribute("mes")%></h2>
 </body>
 </html>
