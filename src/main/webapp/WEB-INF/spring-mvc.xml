@@ -24,7 +24,7 @@
     <mvc:annotation-driven/>
 
     <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.eport.gnss.web" />
+    <context:component-scan base-package="com.eport.gnss.web"/>
 
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 
@@ -61,6 +61,11 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="2"/>
+    </bean>
+
+    <!-- MultipartFile 上传文件    -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="2000000"/>
     </bean>
 
 </beans>
