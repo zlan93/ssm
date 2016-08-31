@@ -18,15 +18,29 @@
 </form><br><br>
 <hr/>
 <br>
-<a href="/ssm/home/update">正常的save</a>
+<%--<a href="/ssm/home/update">正常的save</a>
+<button id="btn1">正常的save</button>
 <br><br>
 <a href="/ssm/home/update1">错误，需要回滚的save（验证事物回滚）</a>
 
-
+<br><br>
+<div id="mes"></div>
 <script type="text/javascript">
     $(document).ready(function (){
-
+         $('#btn1').bind('click',function (){
+             $.ajax({
+                 url:'<%=path%>/ssm/home/update',
+                 type:'POST',
+                 data:[],
+                 dataType:'json',
+                 success:function(data) {
+                     if(data.res){
+                         $('#mes').empty().append("正常的save: "+data.res);
+                     }
+                 }//end success
+             });//end ajax
+         });//end bind
     });
-</script>
+</script>--%>
 </body>
 </html>
