@@ -7,6 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>ssm</title>
+    <link href="/Content/plugin/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
     <script src="<%=path%>/Content/custom/js/jquery1.4.js" type="text/javascript"></script>
 </head>
 <body>
@@ -18,6 +19,14 @@
 </form><br><br>
 <hr/>
 <br>
+
+<script type="text/javascript" src="<%=path%>/Content/plugin/datetimepicker/js/bootstrap-datetimepicker.min.js"/>
+<script type="text/javascript">
+    $(document).ready(function (){
+        
+    });
+
+</script>
 <%--<a href="/ssm/home/update">正常的save</a>
 <button id="btn1">正常的save</button>
 <br><br>
