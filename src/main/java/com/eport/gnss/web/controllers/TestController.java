@@ -90,7 +90,8 @@ return mav;
     }
 
     @SystemLog(logName = "测试事物回滚")
-    //测试事物回滚的update  transac注解在service层
+    //测试事物回滚的update
+    // transaction注解在service层，在controller层try-catch
     @RequestMapping("/home/update1")
     public Object doUpdate1(HttpServletRequest request){
 
