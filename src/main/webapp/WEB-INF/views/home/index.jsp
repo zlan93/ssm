@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>ssm</title>
     <link href="/Content/plugin/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
-    <script src="<%=path%>/Content/custom/js/jquery1.4.js" type="text/javascript"></script>
+    <script src="<%=path%>/Content/custom/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 </head>
 <body>
 <h2>Hello World!11111</h2>

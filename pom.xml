@@ -29,14 +29,14 @@
         因为IDEA无法编译非resource下的xml文件，所以在这里配置去读mapper文件
     -->
     <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
-        <filtering>true</filtering>
-      </resource>
+      <!--<resource>-->
+        <!--<directory>src/main/resources</directory>-->
+        <!--<includes>-->
+          <!--<include>**/*.properties</include>-->
+          <!--<include>**/*.xml</include>-->
+        <!--</includes>-->
+        <!--<filtering>true</filtering>-->
+      <!--</resource>-->
       <resource>
         <directory>src/main/java</directory>
         <includes>

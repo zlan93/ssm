@@ -14,7 +14,7 @@
 <head>
     <title>Title</title>
     <meta >
-    <script src="<%=path%>/Content/custom/js/jquery1.4.js" type="text/javascript"></script>
+    <script src="<%=path%>/Content/custom/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 </head>
 <body>
 <h1>login error </h1>

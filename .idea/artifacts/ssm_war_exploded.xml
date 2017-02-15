@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ssm:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="ssm:war exploded">
     <output-path>$PROJECT_DIR$/target/gnss</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -37,7 +37,6 @@
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.2.6" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
-          <element id="library" level="project" name="ojdbc6" />
         </element>
       </element>
       <element id="directory" name="META-INF">
